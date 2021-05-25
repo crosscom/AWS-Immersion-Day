@@ -1,4 +1,4 @@
-# AWS-Immersion-Day
+# AWS-Immersion-Day for CNF Partner/Customer in Telco
 
 ## 1. Please download CFN template for this session (nokia-immersion-infra.yaml)
 
