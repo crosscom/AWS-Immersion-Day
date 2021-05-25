@@ -1,6 +1,6 @@
 # AWS-Immersion-Day for CNF Partner/Customer in Telco
 
-## 1. Please download CFN template for this session (nokia-immersion-infra.yaml)
+## 1. Please download CFN template for this session (https://github.com/crosscom/AWS-Immersion-Day/blob/main/template/aws-immersion-infra.yaml)
 
 * This creates VPC, public/private subnets, subnet route tables, IGW, NAT-GW, Security Groups, EKS Cluster and Bastion Instance
 
