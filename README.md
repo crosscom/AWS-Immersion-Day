@@ -9,6 +9,9 @@
 * https://dashboard.eventengine.run/dashboard.
 * Please put Event Hash (will be given at the session). 
 * Please use OTP authentication with your company email.
+
+![Dashboard](image/dashboard.png)
+
 * Click "Set Team Name" (Team is equivalent to the account)
     * Please put TEAM name to be your name.  
 * Click "SSH key" 
