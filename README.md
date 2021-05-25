@@ -7,7 +7,7 @@
 ## 2. Log in to AWS Event Engine 
 
 * https://dashboard.eventengine.run/dashboard.
-* Please put Event Hash (will be given at the session). 
+* Please put Event Hash (will be given at the session from your instructor). 
 * Please use OTP authentication with your company email.
 * Click "Set Team Name" (Team is equivalent to the account)
     * Please put TEAM name to be your name.  
