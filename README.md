@@ -22,7 +22,7 @@
 * Create Stack -> upload a template file -> Choose file (select downloaded "nokia-immersion-infra.yaml").
 
 
-![Landing Zone configuratoin](image/immersion-day1.jpg)
+![Landing Zone configuratoin](image/immersion-day1.png)
 
 
 ## 4. Login to Bastion Host 
