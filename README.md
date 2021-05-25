@@ -9,9 +9,6 @@
 * https://dashboard.eventengine.run/dashboard.
 * Please put Event Hash (will be given at the session). 
 * Please use OTP authentication with your company email.
-
-![Dashboard](image/dashboard.png)
-
 * Click "Set Team Name" (Team is equivalent to the account)
     * Please put TEAM name to be your name.  
 * Click "SSH key" 
@@ -19,6 +16,7 @@
 * Click "AWS Console"
     * Copy credentials (export AWS_DEFAULT_REGION=..) 
     * Click "Open AWS Console".
+![Dashboard](image/dashboard.png)
 
 ## 3. Create Environment with CloudFormation
 * Type "CloudFormation" at search service section and go to CloudFormation.
