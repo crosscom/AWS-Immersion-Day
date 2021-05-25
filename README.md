@@ -64,7 +64,7 @@
 * (Window user) Log in from your laptop
     * https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html
 
-## 5. Make bastion to be for Kubectl client
+## 5. Make bastion to be for kubectl client
 
 * Download kubectl. 
 
