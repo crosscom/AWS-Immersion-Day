@@ -157,6 +157,7 @@
 * *Subnets* -> privateAz1
 * *SSH Key pair* -> ee-default-keypair
 * Click *Create* at Review and create page. 
+* After the creation of EKS managed node group (ng2), it can be verified in kubectl as 2 worker nodes in the cluster (each from ng1 (self-managed) and ng2 (EKS managed).
   ````
   kubectl get node
   NAME                        STATUS   ROLES    AGE     VERSION
