@@ -127,7 +127,7 @@
   curl -o aws-auth-cm.yaml https://s3.us-west-2.amazonaws.com/amazon-eks/cloudformation/2020-10-29/aws-auth-cm.yaml
   ````
 
-* Open aws-auth-cm.yaml file downloaded using vi or any text editor. And place above copied NodeInstanceRole value to the place of "*<ARN of instance role (not instance profile)>*".
+* Open aws-auth-cm.yaml file downloaded using vi or any text editor. And place above copied NodeInstanceRole value to the place of "*<ARN of instance role (not instance profile)>*", and then apply this through kubectl.
   ````
   kind: ConfigMap
   metadata:
@@ -140,6 +140,9 @@
         groups:
           - system:bootstrappers
           - system:nodes
+  ````
+  ````
+  kubectl -f apply aws-auth-cm.yaml
   ````
 
 ## 7. EKS-managed Node Group 
