@@ -99,10 +99,9 @@
   ````
 
 ## 6. Self-managed Node Group creation (with Multus CNI Plugin)
-
-* Go to S3 and create bucket (folder/directory) with *Create bucket*  
-* Bucket name to be unique like young-jung-immersion, and then *Create bucket*
-* Click the bucket you just created and drag & drop lambda_function.zip file (which you can find from /template directory of this GitHub). Then, click *Upload*
+* Go to S3 and create bucket (folder/directory) with *Create bucket*.
+* Bucket name to be unique like young-jung-immersion, and then *Create bucket*.
+* Click the bucket you just created and drag & drop lambda_function.zip file (which you can find from /template directory of this GitHub). Then, click *Upload*.
 * Please memorize bucket name you create (this is required in CloudFormation)
 * Go to CloudFormation console by selecting CloudFormation from Services drop down or by search menu. 
     * Select *Create stack*, *with new resources(standard)*.
