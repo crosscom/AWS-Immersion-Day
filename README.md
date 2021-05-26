@@ -98,5 +98,74 @@
   aws eks describe-cluster --name eks-my-first-stack
   ````
 
-  
+## 6. Self-managed Node Group creation (with Multus CNI Plugin)
+
+* Go to S3 and create bucket (folder/directory) with *Create bucket*  
+* Bucket name to be unique like young-jung-immersion, and then *Create bucket*
+* Click the bucket you just created and drag & drop lambda_function.zip file (which you can find from /template directory of this GitHub). Then, click *Upload*
+* Please memorize bucket name you create (this is required in CloudFormation)
+* Go to CloudFormation console by selecting CloudFormation from Services drop down or by search menu. 
+    * Select *Create stack*, *with new resources(standard)*.
+    * Click *Template is ready" (default), "Upload a template file", "Choose file". Select "amazon-eks-nodegroup-multus.yaml" file that you have downloaded from this GitHub. 
+    * Stack name -> ng1
+    * ClusterName -> eks-immersion (your own name)
+    * ClusterControlPlaneSecurityGroup -> "immersion-EksControlSecurityGroup-xxxx"
+    * NodeGroupName -> ng1
+    * Min/Desired/MaxSize -> 1/1/1
+    * KeyName -> ee-default-keypair
+    * VpcId -> vpc-immersion (that you created)
+    * Subnets -> privateAz1-immersion (this is for main primary K8s networking network)
+    * MultusSubnets -> multus1Az1 and Multus2Az1
+    * MultusSecurityGroups -> immersion-MultusSecurityGroup
+    * LambdaS3Bucket -> the one you created (young-jung-immersion)
+    * LambdaS3Key -> lambda_function.zip
+    * *Next*, check "I acknowledge...", and then *Next*.
+
+* Once CloudFormation stack creation is completed, check *Output* part in the menu and copy the value of NodeInstanceRole (e.g. arn:aws:iam::153318889914:role/ng1-NodeInstanceRole-1C77OUUUP6686)
+* Go to the Bastion Host where we can run kubectl command. 
+* Download aws-auth-cm file at Bastion Host.
+  ````
+  curl -o aws-auth-cm.yaml https://s3.us-west-2.amazonaws.com/amazon-eks/cloudformation/2020-10-29/aws-auth-cm.yaml
+  ````
+
+* Open aws-auth-cm.yaml file downloaded using vi or any text editor. And place above copied NodeInstanceRole value to the place of "*<ARN of instance role (not instance profile)>*".
+  ````
+  kind: ConfigMap
+  metadata:
+    name: aws-auth
+    namespace: kube-system
+  data:
+    mapRoles: |
+      - rolearn: arn:aws:iam::153318889914:role/ng1-NodeInstanceRole-1C77OUUUP6686
+        username: system:node:{{EC2PrivateDNSName}}
+        groups:
+          - system:bootstrappers
+          - system:nodes
+  ````
+
+## 7. EKS-managed Node Group 
+* Let's try to create EKS-managed node group now.
+* Go to EKS console (service search -> type EKS -> select *Elastic Kubernetes Service*)
+* Select *Clusters* under Amazon EKS from left side of control pane. 
+* Click your EKS cluster in the list, and select *Configuration*.
+* Select *Compute*, and then *Add Node Group*. 
+* Fill *Name*->ng2
+* Select *Node IAM Role* -> the one already created in Step 7 by CFN. 
+* *Min/Desired/MaxSize* -> 1/1/1
+* *Subnets* -> privateAz1
+* *SSH Key pair* -> ee-default-keypair
+* Click *Create* at Review and create page. 
+  ````
+  kubectl get node
+  NAME                        STATUS   ROLES    AGE     VERSION
+  ip-10-0-2-33.ec2.internal   Ready    <none>   8m22s   v1.19.6-eks-49a6c0
+  ip-10-0-2-47.ec2.internal   Ready    <none>   18m     v1.19.6-eks-49a6c0
+  ````
+
+## 8. Clean up environment
+* Delete Node Group in EKS menu. 
+* Go to CloudFormation and Delete ng1 stack. 
+* After completion of above, delete the first infra stack. 
+
+
 
