@@ -166,10 +166,10 @@
         "mode": "l3",
         "ipam": {
           "type": "host-local",
-          "subnet": "10.0.2.0/24",
-          "rangeStart": "10.0.2.70",
-          "rangeEnd": "10.0.2.80",
-          "gateway": "10.0.2.1"
+          "subnet": "10.0.4.0/24",
+          "rangeStart": "10.0.4.70",
+          "rangeEnd": "10.0.4.80",
+          "gateway": "10.0.4.1"
         }
       }'
   ````
