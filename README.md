@@ -148,8 +148,61 @@
   kubectl apply -f aws-auth-cm.yaml
   ````
 
-## 7. EKS-managed Node Group 
-* Let's try to create EKS-managed node group now.
+## 7. Multus (dummy) application installation 
+
+* Let's go to Bastion host where we can run kubectl. 
+* Create below networkAttachementDefinition (multus-ipvlan.yaml) and apply it to the cluster.
+
+  ````
+  apiVersion: "k8s.cni.cncf.io/v1"
+  kind: NetworkAttachmentDefinition
+  metadata:
+    name: ipvlan-conf
+  spec:
+    config: '{
+        "cniVersion": "0.3.0",
+        "type": "ipvlan",
+        "master": "eth1",
+        "mode": "l3",
+        "ipam": {
+          "type": "host-local",
+          "subnet": "10.0.2.0/24",
+          "rangeStart": "10.0.2.70",
+          "rangeEnd": "10.0.2.80",
+          "gateway": "10.0.2.1"
+        }
+      }'
+  ````
+
+  ````
+  kubectl apply -f multus-ipvlan.yaml
+  ````
+
+* Deploy dummy app using above network attachment. (app-ipvlan.yaml)
+  ````
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: samplepod
+    annotations:
+            #k8s.v1.cni.cncf.io/networks: private100a-cni
+      k8s.v1.cni.cncf.io/networks: ipvlan-conf
+  spec:
+    containers:
+    - name: samplepod
+      command: ["/bin/bash", "-c", "trap : TERM INT; sleep infinity & wait"]
+      image: nginx
+  ````
+
+  ````
+  kubectl apply -f app-ipvlan.yaml
+  kubectl describe pod samplepod
+  kubectl exec -it samplepod -- /bin/bash
+  root@samplepod:/# apt-get update && apt-get install -y net-tools iputils-ping iproute2
+  ````
+
+## 8. EKS-managed Node Group 
+* Let's try to create EKS-managed node group.
 * Go to EKS console (service search -> type EKS -> select *Elastic Kubernetes Service*)
 * Select *Clusters* under Amazon EKS from left side of control pane. 
 * Click your EKS cluster in the list, and select *Configuration*.
@@ -160,7 +213,6 @@
 * *Subnets* -> privateAz1
 * *SSH Key pair* -> ee-default-keypair
 * Click *Create* at Review and create page. 
-* After the creation of EKS managed node group (ng2), it can be verified in kubectl as 2 worker nodes in the cluster (each from ng1 (self-managed) and ng2 (EKS managed).
   ````
   kubectl get node
   NAME                        STATUS   ROLES    AGE     VERSION
@@ -168,10 +220,7 @@
   ip-10-0-2-47.ec2.internal   Ready    <none>   18m     v1.19.6-eks-49a6c0
   ````
 
-## 8. Clean up environment
+## 9. Clean up environment
 * Delete Node Group in EKS menu. 
-* Go to CloudFormation and Delete worker node group stack. 
+* Go to CloudFormation and Delete ng1 stack. 
 * After completion of above, delete the first infra stack. 
-
-
-
