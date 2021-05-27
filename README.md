@@ -1,5 +1,8 @@
 # AWS-Immersion-Day for CNF Partner/Customer in Telco
 
+### Please keep in mind..
+* You only have ot use 'us-east-1' Region not the one closest to you.
+
 ## 1. Please download CFN template for this session
 * CFN repo: https://github.com/crosscom/AWS-Immersion-Day/blob/main/template/aws-immersion-infra.yaml
 * This creates VPC, public/private subnets, subnet route tables, IGW, NAT-GW, Security Groups, EKS Cluster and Bastion Instance
@@ -79,7 +82,7 @@
   kubectl version —short —client
   ````
 
-* Check your name of EKS cluster (from CloudFormation output or EKS console (service search -> EKS))
+* Check your name of EKS cluster (from CloudFormation output or EKS console (service search -> EKS)) - you provided this name in Step3 CloudFormation creation.
 
 * Config kubeconfig with EKS CLI
   ````
@@ -100,7 +103,7 @@
 
 ## 6. Self-managed Node Group creation (with Multus CNI Plugin)
 * Go to S3 and create bucket (folder/directory) with *Create bucket*.
-* Bucket name to be unique like young-jung-immersion, and then *Create bucket*.
+* Bucket name to be unique like *young-jung-immersion* (recommend to use your name or unique keyword), and then *Create bucket*.
 * Click the bucket you just created and drag & drop lambda_function.zip file (which you can find from /template directory of this GitHub). Then, click *Upload*.
 * Please memorize bucket name you create (this is required in CloudFormation)
 * Go to CloudFormation console by selecting CloudFormation from Services drop down or by search menu. 
@@ -120,7 +123,7 @@
     * LambdaS3Key -> lambda_function.zip
     * *Next*, check "I acknowledge...", and then *Next*.
 
-* Once CloudFormation stack creation is completed, check *Output* part in the menu and copy the value of NodeInstanceRole (e.g. arn:aws:iam::153318889914:role/ng1-NodeInstanceRole-1C77OUUUP6686)
+* Once CloudFormation stack creation is completed, check *Output* part in the menu and copy the value of NodeInstanceRole (e.g. arn:aws:iam::153318889914:role/ng1-NodeInstanceRole-1C77OUUUP6686 --> this is an example, you have to use your own)
 * Go to the Bastion Host where we can run kubectl command. 
 * Download aws-auth-cm file at Bastion Host.
   ````
@@ -142,7 +145,7 @@
           - system:nodes
   ````
   ````
-  kubectl -f apply aws-auth-cm.yaml
+  kubectl apply -f aws-auth-cm.yaml
   ````
 
 ## 7. EKS-managed Node Group 
@@ -167,7 +170,7 @@
 
 ## 8. Clean up environment
 * Delete Node Group in EKS menu. 
-* Go to CloudFormation and Delete ng1 stack. 
+* Go to CloudFormation and Delete worker node group stack. 
 * After completion of above, delete the first infra stack. 
 
 
