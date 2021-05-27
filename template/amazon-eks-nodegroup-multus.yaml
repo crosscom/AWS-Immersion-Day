@@ -80,6 +80,11 @@ Parameters:
     Type: String
     Description: Unique identifier for the Node Group.
 
+  NodeImageId:
+    Type: String
+    Default: ""
+    Description: (Optional) Specify your own custom image ID. This value overrides any AWS Systems Manager Parameter Store value specified above.
+
   NodeImageIdSSMParam:
     Type: "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>"
     Default: /aws/service/eks/optimized-ami/1.19/amazon-linux-2/recommended/image_id
