@@ -59,14 +59,14 @@
     ````
     aws sts get-caller-identity
     {
-      "Account": "400166681888", 
-      "UserId": "AROAV2K6K7UQPEU2EMBY3:MasterKey", 
-      "Arn": "arn:aws:sts::400166681888:assumed-role/TeamRole/MasterKey"
+      "Account": "400888888888", 
+      "UserId": "AROAV2K6K7UQPEU2EAAAA:MasterKey", 
+      "Arn": "arn:aws:sts::400888888888:assumed-role/TeamRole/MasterKey"
     }
     ````
 
-* (Window user) Log in from your laptop
-    * https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html
+* (Window user) Log in from your laptop 
+    * Please use PuTTy and refer to the guide, https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html
 
 ## 5. Make a Bastion Host to be a kubectl client
 
