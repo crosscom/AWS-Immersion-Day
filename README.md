@@ -148,9 +148,14 @@
   kubectl apply -f aws-auth-cm.yaml
   ````
 
-## 7. Multus (dummy) application installation 
+## (Optional only if time permits) Multus (dummy) application installation 
 
 * Let's go to Bastion host where we can run kubectl. 
+* Install multus CNI.
+  ````
+  git clone https://github.com/intel/multus-cni.git 
+  kubectl apply -f ~/multus-cni/images/multus-daemonset.yml
+  ````
 * Create below networkAttachementDefinition (multus-ipvlan.yaml) and apply it to the cluster.
 
   ````
