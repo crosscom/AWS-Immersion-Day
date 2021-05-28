@@ -45,7 +45,7 @@
   ssh -A ec2-user@54.208.182.244
   ````
 
-    * Copy AWS credentials (AWS_DEFAULT_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
+    * Copy AWS credentials (AWS_DEFAULT_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY; be mindful that you have to use your own not below one, that I asked youto copy at Step 2).
 
   ````
   export AWS_DEFAULT_REGION=us-east-1
