@@ -23,7 +23,7 @@
 
 ## 3. Create Environment with CloudFormation
 * Type "CloudFormation" at search service section and go to CloudFormation.
-* Create Stack -> upload a template file -> Choose file (select downloaded "nokia-immersion-infra.yaml").
+* Create Stack -> upload a template file -> Choose file (select downloaded "aws-immersion-infra.yaml").
 
 
 ![Landing Zone configuratoin](image/immersion-day1.png)
