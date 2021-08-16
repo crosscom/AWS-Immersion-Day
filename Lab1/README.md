@@ -3,12 +3,11 @@
 ### Please keep in mind..
 * You only have to use 'us-east-1' Region not the one closest to you.
 
-## 1. Please download CFN template for this session
-* CFN repo: https://github.com/crosscom/AWS-Immersion-Day/blob/main/template/aws-immersion-infra.yaml
+## 1. Please download CFN template for this Lab
+* CFN repo: https://github.com/crosscom/AWS-Immersion-Day/blob/main/Lab1/templates/aws-immersion-infra.yaml
 * This creates VPC, public/private subnets, subnet route tables, IGW, NAT-GW, Security Groups, EKS Cluster and Bastion Instance
 
 ## 2. Log in to AWS Event Engine 
-
 * https://dashboard.eventengine.run/dashboard.
 * Please put Event Hash (will be given at the session from your instructor). 
 * Please use OTP authentication with your company email.
@@ -147,85 +146,8 @@
   ````
   kubectl apply -f aws-auth-cm.yaml
   ````
-
-## (Optional only if time permits) Multus (dummy) application installation 
-
-* Let's go to Bastion host where we can run kubectl. 
-* Install multus CNI.
-  ````
-  git clone https://github.com/intel/multus-cni.git 
-  kubectl apply -f ~/multus-cni/images/multus-daemonset.yml
-  ````
-* Create below networkAttachementDefinition (multus-ipvlan.yaml) and apply it to the cluster.
-
-  ````
-  apiVersion: "k8s.cni.cncf.io/v1"
-  kind: NetworkAttachmentDefinition
-  metadata:
-    name: ipvlan-conf
-  spec:
-    config: '{
-        "cniVersion": "0.3.0",
-        "type": "ipvlan",
-        "master": "eth1",
-        "mode": "l3",
-        "ipam": {
-          "type": "host-local",
-          "subnet": "10.0.4.0/24",
-          "rangeStart": "10.0.4.70",
-          "rangeEnd": "10.0.4.80",
-          "gateway": "10.0.4.1"
-        }
-      }'
-  ````
-
-  ````
-  kubectl apply -f multus-ipvlan.yaml
-  ````
-
-* Deploy dummy app using above network attachment. (app-ipvlan.yaml)
-  ````
-  apiVersion: v1
-  kind: Pod
-  metadata:
-    name: samplepod
-    annotations:
-            #k8s.v1.cni.cncf.io/networks: private100a-cni
-      k8s.v1.cni.cncf.io/networks: ipvlan-conf
-  spec:
-    containers:
-    - name: samplepod
-      command: ["/bin/bash", "-c", "trap : TERM INT; sleep infinity & wait"]
-      image: nginx
-  ````
-
-  ````
-  kubectl apply -f app-ipvlan.yaml
-  kubectl describe pod samplepod
-  kubectl exec -it samplepod -- /bin/bash
-  root@samplepod:/# apt-get update && apt-get install -y net-tools iputils-ping iproute2
-  ````
-
-## 8. EKS-managed Node Group 
-* Let's try to create EKS-managed node group.
-* Go to EKS console (service search -> type EKS -> select *Elastic Kubernetes Service*)
-* Select *Clusters* under Amazon EKS from left side of control pane. 
-* Click your EKS cluster in the list, and select *Configuration*.
-* Select *Compute*, and then *Add Node Group*. 
-* Fill *Name*->ng2
-* Select *Node IAM Role* -> the one already created in Step 7 by CFN. 
-* *Min/Desired/MaxSize* -> 1/1/1
-* *Subnets* -> privateAz1
-* *SSH Key pair* -> ee-default-keypair
-* Click *Create* at Review and create page. 
-  ````
-  kubectl get node
-  NAME                        STATUS   ROLES    AGE     VERSION
-  ip-10-0-2-33.ec2.internal   Ready    <none>   8m22s   v1.19.6-eks-49a6c0
-  ip-10-0-2-47.ec2.internal   Ready    <none>   18m     v1.19.6-eks-49a6c0
-  ````
-
-## 9. Clean up environment
-* Delete Node Group in EKS menu. 
-* Go to CloudFormation and Delete ng1 stack. 
-* After completion of above, delete the first infra stack. 
+  
+ * Verfiy node group is created under your cluster. 
+ ````
+ kubectl get nodes
+ ````
