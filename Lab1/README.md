@@ -151,3 +151,5 @@
  ````
  kubectl get nodes
  ````
+
+If all creation looks good (kubectl get nodes command shows worker node instance), then let's move to [Lab2](https://github.com/crosscom/AWS-Immersion-Day/tree/main/Lab2).
