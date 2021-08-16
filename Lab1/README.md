@@ -1,4 +1,4 @@
-# AWS-Immersion-Day for CNF Engineer Lab1
+# Lab1: EKS for CNF engineer (Environment creation)
 
 ### Please keep in mind..
 * You only have to use 'us-east-1' Region not the one closest to you.
