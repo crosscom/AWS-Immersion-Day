@@ -19,14 +19,14 @@
 * Click "AWS Console"
     * Copy credentials (export AWS_DEFAULT_REGION=..) 
     * Click "Open AWS Console".
-![Dashboard](image/dashboard.png)
+![Dashboard](images/dashboard.png)
 
 ## 3. Create Environment with CloudFormation
 * Type "CloudFormation" at search service section and go to CloudFormation.
 * Create Stack -> upload a template file -> Choose file (select downloaded "aws-immersion-infra.yaml").
 
 
-![Landing Zone configuratoin](image/immersion-day1.png)
+![Landing Zone configuratoin](images/immersion-day1.png)
 
 
 ## 4. Login to Bastion Host 
