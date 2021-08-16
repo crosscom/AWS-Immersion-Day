@@ -3,11 +3,11 @@
 ### Please keep in mind..
 * You only have to use 'us-east-1' Region not the one closest to you.
 
-## Create your own Docker image
+## 1. Create your own Docker image
 
-## Upload it to ECR
+## 2. Upload it to ECR
 
-## Create Mulus App using uploaded Docker image from the ECR
+## 3. Create Mulus App using uploaded Docker image from the ECR
 
 * Let's go to Bastion host where we can run kubectl. 
 * Install multus CNI.
@@ -65,7 +65,7 @@
   root@samplepod:/# apt-get update && apt-get install -y net-tools iputils-ping iproute2
   ````
 
-## 9. Clean up environment
+## 4. Clean up environment
 * Delete Node Group in EKS menu. 
 * Go to CloudFormation and Delete ng1 stack. 
 * After completion of above, delete the first infra stack. 
