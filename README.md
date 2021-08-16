@@ -1,7 +1,7 @@
 # AWS-Immersion-Day for CNF Partner/Customer in Telco
 
 ### Please keep in mind..
-* You only have ot use 'us-east-1' Region not the one closest to you.
+* You only have to use 'us-east-1' Region not the one closest to you.
 
 ## 1. Please download CFN template for this session
 * CFN repo: https://github.com/crosscom/AWS-Immersion-Day/blob/main/template/aws-immersion-infra.yaml
