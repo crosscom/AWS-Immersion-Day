@@ -3,11 +3,7 @@
 ### Please keep in mind..
 * You only have to use 'us-east-1' Region not the one closest to you.
 
-## 1. Please download CFN template for this session
-* CFN repo: https://github.com/crosscom/AWS-Immersion-Day/blob/main/template/aws-immersion-infra.yaml
-* This creates VPC, public/private subnets, subnet route tables, IGW, NAT-GW, Security Groups, EKS Cluster and Bastion Instance
-
-## 2. Log in to AWS Event Engine 
+## Log in to AWS Event Engine 
 
 * https://dashboard.eventengine.run/dashboard.
 * Please put Event Hash (will be given at the session from your instructor). 
