@@ -81,7 +81,7 @@
   kubectl apply -f multus-ipvlan.yaml
   ````
 
-* Deploy dummy app using above network attachment. (app-ipvlan.yaml)
+* Deploy your docker using above network attachment. (create a file named, app-ipvlan.yaml)
   ````
   apiVersion: v1
   kind: Pod
