@@ -121,8 +121,9 @@
     * MultusSecurityGroups -> immersion-MultusSecurityGroup
     * LambdaS3Bucket -> the one you created (young-jung-immersion)
     * LambdaS3Key -> lambda_function.zip
-    * *Next*, check "I acknowledge...", and then *Next*.
-
+    * There is nothing to specify in "Configure Stack options" page, so please click again "Next" at the bottom.
+    * At Review page, go bottom of the page and click checkbox for "I acknowledge that AWS...", and then click "Create stack".
+    
 * Once CloudFormation stack creation is completed, check *Output* part in the menu and copy the value of NodeInstanceRole (e.g. arn:aws:iam::153318889914:role/ng1-NodeInstanceRole-1C77OUUUP6686 --> this is an example, you have to use your own)
 * Go to the Bastion Host where we can run kubectl command. 
 * Download aws-auth-cm file at Bastion Host.
