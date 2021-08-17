@@ -25,8 +25,8 @@
   FROM ubuntu:focal
   MAINTAINER Young Jung <young.jung93@gmail.com>
   ENV DEBIAN_FRONTEND noninteractive
-  RUN apt-get update && apt-get install -y net-tools iputils-ping iproute2 python python3 pip/
-      pip install boto3 requests/
+  RUN apt-get update && apt-get install -y net-tools iputils-ping iproute2 python python3 pip vim
+  RUN pip install boto3 requests
   WORKDIR /
   ````
 * Build a Docker image.
