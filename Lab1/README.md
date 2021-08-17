@@ -17,6 +17,12 @@
 ## 3. Create Environment with CloudFormation
 * Type "CloudFormation" at search service section and go to CloudFormation.
 * Create Stack -> upload a template file -> Choose file (select downloaded "aws-immersion-infra.yaml").
+* Keep default values in configuraiton of CloudFormation Template. 
+    * AvailabilityZones --> choose us-east-1a and us-east-1b (2 AZs required for EKS creation).
+    * BastionKeyPairName --> select 'ee-dfault-keypair' from dropdown menu. 
+    * Click "Next"
+* There is nothing to specify in "Configure Stack options" page, so please click again "Next" at the bottom. 
+* At Review page, go bottom of the page and click checkbox for "I acknowledge that AWS...", and then click "Create stack". 
 
 
 ![Landing Zone configuratoin](images/immersion-day1.png)
