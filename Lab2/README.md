@@ -41,9 +41,9 @@
 * Create an ECR repository in ECR Console. "ECR" -> "Create Repository"
 * Run below commands at Bastion host (where you created a docker image). 
   ````
-  aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 340256550793.dkr.ecr.us-west-2.amazonaws.com
-  docker tag d2dfc4b1406a 340256550793.dkr.ecr.us-west-2.amazonaws.com/my-repository:tag
-  docker push 340256550793.dkr.ecr.us-west-2.amazonaws.com/my-repository:tag
+  aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin YOUR-ACCT-ID.dkr.ecr.us-east-1.amazonaws.com
+  docker tag d2dfc4b1406a YOUR-ACCT-ID.dkr.ecr.us-east-1.amazonaws.com/my-repository:tag
+  docker push YOUR-ACCT-ID.dkr.ecr.us-east-1.amazonaws.com/my-repository:tag
   ````
 
 ## 3. Create Mulus App using uploaded Docker image from the ECR
@@ -94,14 +94,13 @@
     containers:
     - name: samplepod
       command: ["/bin/bash", "-c", "trap : TERM INT; sleep infinity & wait"]
-      image: nginx
+      image: YOUR-ACCT-ID.dkr.ecr.us-east-1.amazonaws.com/my-repository:tag
   ````
 
   ````
   kubectl apply -f app-ipvlan.yaml
   kubectl describe pod samplepod
   kubectl exec -it samplepod -- /bin/bash
-  root@samplepod:/# apt-get update && apt-get install -y net-tools iputils-ping iproute2
   ````
 
 ## 4. Clean up environment
