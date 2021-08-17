@@ -15,7 +15,6 @@
 * Click "AWS Console"
     * Copy credentials (export AWS_DEFAULT_REGION=..) 
     * Click "Open AWS Console".
-![Dashboard](Lab1/images/dashboard.png)
 
 ## What we will learn today? 
 * **[Lab1](https://github.com/crosscom/AWS-Immersion-Day/tree/main/Lab1)**: EKS environment creation (VPC, Subnets, EKS cluster, Multus-ready worker node) for CNF deployment.
