@@ -11,10 +11,9 @@
   sudo usermod -aG docker ${USER}
   sudo service docker start
   ````
-  (Logout/Login back)
+  (Logout/Login back. You have to re-paste AWS credential again ('export..'))
   ````
-  //sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
-  //sudo chmod g+rwx "$HOME/.docker" -R
+  docker
   ````
 * Create a directory for Dockerfile creation.
   ````
