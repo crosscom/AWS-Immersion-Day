@@ -8,8 +8,10 @@
 * https://dashboard.eventengine.run/dashboard.
 * Please put Event Hash (will be given at the session from your instructor). 
 * Please use OTP authentication with your company email.
+  ![Otp](Lab1/images/otp.png)
 * Click "Set Team Name" (Team is equivalent to the account)
     * Please put TEAM name to be your name.  
+    ![Dashboard](Lab1/images/dashboard-aws.png)
 * Click "SSH key" 
     * Download **ee-default-keypair** to your PC (just in case, copy key material to notepad as well).
 * Click "AWS Console"
