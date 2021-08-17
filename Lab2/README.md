@@ -94,7 +94,7 @@
     containers:
     - name: samplepod
       command: ["/bin/bash", "-c", "trap : TERM INT; sleep infinity & wait"]
-      image: YOUR-ACCT-ID.dkr.ecr.us-east-1.amazonaws.com/my-repository:tag
+      image: 914125631499.dkr.ecr.us-east-1.amazonaws.com/my-ecr-image:latest
   ````
 
   ````
