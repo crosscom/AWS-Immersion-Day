@@ -2,6 +2,7 @@
 
 ### Please keep in mind..
 * You only have to use 'us-east-1' Region not the one closest to you. (make it sure, you should be with "N.Virginia" - please refer to below console view).
+* As of today (8/15/2021), if we run infra cloudformation, then EKS cluster is created with K8s 1.20 versino. 
 
 ## 1. Please download CFN template for this Lab
 * CFN repo1: https://github.com/crosscom/AWS-Immersion-Day/blob/main/Lab1/templates/aws-immersion-infra.yaml
@@ -72,8 +73,8 @@
 * Download kubectl. 
 
   ````
-  curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl
-  curl -o kubectl.sha256 https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/``amd64``/kubectl.sha256
+  curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.20.4/2021-04-12/bin/linux/amd64/kubectl
+  curl -o kubectl.sha256 https://amazon-eks.s3.us-west-2.amazonaws.com/1.20.4/2021-04-12/bin/linux/amd64/kubectl.sha256
   openssl sha1 -sha256 kubectl
   chmod +x ./kubectl
   mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
