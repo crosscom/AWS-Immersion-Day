@@ -1,7 +1,8 @@
 # Lab1: EKS for CNF engineer (Environment creation)
 
 ### Please keep in mind..
-* You only have to use 'us-east-1' Region not the one closest to you.
+* You only have to use 'us-east-1' Region not the one closest to you. (make it sure, you should be with "N.Virginia").
+![Console View](images/console.png)
 
 ## 1. Please download CFN template for this Lab
 * CFN repo1: https://github.com/crosscom/AWS-Immersion-Day/blob/main/Lab1/templates/aws-immersion-infra.yaml
