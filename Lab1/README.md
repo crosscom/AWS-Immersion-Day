@@ -11,18 +11,7 @@
 * Lambda Function Zip: https://github.com/crosscom/AWS-Immersion-Day/blob/main/Lab1/templates/lambda_function.zip
     * Lambda function to be used along with CFN repo2 (worker node group stack). 
 
-## 2. Log in to AWS Event Engine 
-* https://dashboard.eventengine.run/dashboard.
-* Please put Event Hash (will be given at the session from your instructor). 
-* Please use OTP authentication with your company email.
-* Click "Set Team Name" (Team is equivalent to the account)
-    * Please put TEAM name to be your name.  
-* Click "SSH key" 
-    * Download **ee-default-keypair** to your PC (just in case, copy key material to notepad as well).
-* Click "AWS Console"
-    * Copy credentials (export AWS_DEFAULT_REGION=..) 
-    * Click "Open AWS Console".
-![Dashboard](images/dashboard.png)
+## 2. Log in to AWS Console 
 
 ## 3. Create Environment with CloudFormation
 * Type "CloudFormation" at search service section and go to CloudFormation.
