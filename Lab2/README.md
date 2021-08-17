@@ -25,7 +25,8 @@
   FROM ubuntu:focal
   MAINTAINER Young Jung <young.jung93@gmail.com>
   ENV DEBIAN_FRONTEND noninteractive
-  RUN apt-get update && apt-get install -y net-tools iputils-ping iproute2   
+  RUN apt-get update && apt-get install -y net-tools iputils-ping iproute2 python python3 pip/
+      pip install boto3 requests/
   WORKDIR /
   ````
 * Build a Docker image.
@@ -100,8 +101,13 @@
   ````
   kubectl apply -f app-ipvlan.yaml
   kubectl describe pod samplepod
-  kubectl exec -it samplepod -- /bin/bash
   ````
+* Verify your Pod whether it has 2 interfaces (one for default K8s networking and the other for Multus interface (10.0.40.0/24)
+  ````
+  kubectl exec -it samplepod -- /bin/bash
+  (in samplepod) ifconfig
+  ````  
+* 
 
 ## 4. Clean up environment
 * Delete Node Group in EKS menu. 
