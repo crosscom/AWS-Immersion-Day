@@ -39,7 +39,7 @@
   
 ## 2. Upload Image to the ECR Repository
 * Create an ECR repository in ECR Console. "ECR" -> "Repositories"->"Create repository".
-      * put your own repo name such as, "my-ecr-image" (The name must start with a letter and can only contain lowercase letters, numbers, hyphens, underscores, and forward slashes). -> "Create repository".
+      * put your own repo name such as, "my-ecr-image" (The name must start with a letter and can only contain lowercase letters, numbers, hyphens, underscores, and forward slashes) -> "Create repository".
 * Run below commands at Bastion host (where you created a docker image). 
   ````
   aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 914125631499.dkr.ecr.us-east-1.amazonaws.com
