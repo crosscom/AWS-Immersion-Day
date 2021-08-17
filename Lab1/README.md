@@ -1,8 +1,7 @@
 # Lab1: EKS for CNF engineer (Environment creation)
 
 ### Please keep in mind..
-* You only have to use 'us-east-1' Region not the one closest to you. (make it sure, you should be with "N.Virginia").
-![Console View](images/console.png)
+* You only have to use 'us-east-1' Region not the one closest to you. (make it sure, you should be with "N.Virginia" - please refer to below console view).
 
 ## 1. Please download CFN template for this Lab
 * CFN repo1: https://github.com/crosscom/AWS-Immersion-Day/blob/main/Lab1/templates/aws-immersion-infra.yaml
@@ -13,6 +12,7 @@
     * Lambda function to be used along with CFN repo2 (worker node group stack). 
 
 ## 2. Log in to AWS Console 
+![Console View](images/console.png)
 
 ## 3. Create Environment with CloudFormation
 * Type "CloudFormation" at search service section and go to CloudFormation.
