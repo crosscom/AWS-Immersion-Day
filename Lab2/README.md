@@ -3,9 +3,48 @@
 ### Please keep in mind..
 * You only have to use 'us-east-1' Region not the one closest to you.
 
-## 1. Create your own Docker image
-
-## 2. Upload it to ECR
+## 1. Create a Docker Image 
+* Prepare docker environment (at your bastion host EC2 instance)
+  ````
+  sudo yum install docker -y
+  sudo groupadd docker
+  sudo usermod -aG docker ${USER}
+  sudo service docker start
+  ````
+  (Logout/Login back)
+  ````
+  sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
+  sudo chmod g+rwx "$HOME/.docker" -R
+  ````
+* Create a directory for Dockerbuild file.
+  ````
+  mkdir dockerimage
+  ````
+* Create a DockerBuild file (file name to be DockerBuild with below contents)
+  ````
+  FROM ubuntu:focal
+  MAINTAINER Young Jung <young.jung93@gmail.com>
+  ENV DEBIAN_FRONTEND noninteractive
+  RUN apt-get update && apt-get install -y net-tools iputils-ping iproute2   
+  WORKDIR /
+  ````
+* Build a Docker image.
+  ```` 
+  docker build .
+  ````
+* Verify Docker image created.
+  ````
+  docker images 
+  ````
+  
+## 2. Upload Image to the ECR Repository
+* Create an ECR repository in ECR Console. "Create Repository" -> 
+* Run below commands at Bastion host (where you created a docker image). 
+  ````
+  aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 340256550793.dkr.ecr.us-west-2.amazonaws.com
+  docker tag d2dfc4b1406a 340256550793.dkr.ecr.us-west-2.amazonaws.com/my-repository:tag
+  docker push 340256550793.dkr.ecr.us-west-2.amazonaws.com/my-repository:tag
+  ````
 
 ## 3. Create Mulus App using uploaded Docker image from the ECR
 
