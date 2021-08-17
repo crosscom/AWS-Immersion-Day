@@ -13,14 +13,14 @@
   ````
   (Logout/Login back)
   ````
-  sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
-  sudo chmod g+rwx "$HOME/.docker" -R
+  //sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
+  //sudo chmod g+rwx "$HOME/.docker" -R
   ````
-* Create a directory for Dockerbuild file.
+* Create a directory for Dockerfile creation.
   ````
   mkdir dockerimage
   ````
-* Create a DockerBuild file (file name to be DockerBuild with below contents)
+* Create a Dockerfile file (file name to be DockerBuild with below contents)
   ````
   FROM ubuntu:focal
   MAINTAINER Young Jung <young.jung93@gmail.com>
