@@ -42,18 +42,17 @@
       * put your own repo name such as, "my-ecr-image" (The name must start with a letter and can only contain lowercase letters, numbers, hyphens, underscores, and forward slashes). -> "Create repository".
 * Run below commands at Bastion host (where you created a docker image). 
   ````
-  aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin YOUR-ACCT-ID.dkr.ecr.us-east-1.amazonaws.com
-  docker tag d2dfc4b1406a YOUR-ACCT-ID.dkr.ecr.us-east-1.amazonaws.com/my-repository:tag
-  docker push YOUR-ACCT-ID.dkr.ecr.us-east-1.amazonaws.com/my-repository:tag
+  aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 914125631499.dkr.ecr.us-east-1.amazonaws.com
+  docker tag 6a01b2ad2952 914125631499.dkr.ecr.us-east-1.amazonaws.com/my-ecr-image:latest
+  docker push 914125631499.dkr.ecr.us-east-1.amazonaws.com/my-ecr-image:latest
   ````
+  *keep in mind that, you have to use your Account ID and Image ID of your docker (you can retrieve all information from above docker images command and from AWS ECR console)*
 
 ## 3. Create Mulus App using uploaded Docker image from the ECR
-
-* Let's go to Bastion host where we can run kubectl. 
+* Create a new directory at your bastion named, "k8s-environment", and `cd k8s-environment`.
 * Install multus CNI.
   ````
-  git clone https://github.com/intel/multus-cni.git 
-  kubectl apply -f ~/multus-cni/images/multus-daemonset.yml
+  kubectl apply -f https://raw.githubusercontent.com/aws/amazon-vpc-cni-k8s/master/config/multus/v3.7.2-eksbuild.1/aws-k8s-multus.yaml
   ````
 * Create below networkAttachementDefinition (multus-ipvlan.yaml) and apply it to the cluster.
 
