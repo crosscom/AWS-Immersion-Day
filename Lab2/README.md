@@ -55,6 +55,10 @@
   ````
   kubectl apply -f https://raw.githubusercontent.com/aws/amazon-vpc-cni-k8s/master/config/multus/v3.7.2-eksbuild.1/aws-k8s-multus.yaml
   ````
+  Upgrade VPC CNI (current VPC CNI 1.7 has a bug for supporting security group for multus interface).
+  ````
+  kubectl apply -f https://raw.githubusercontent.com/aws/amazon-vpc-cni-k8s/v1.8.0/config/v1.8/aws-k8s-cni.yaml
+  ````
 * Create below networkAttachementDefinition (multus-ipvlan.yaml) and apply it to the cluster.
 
   ````
@@ -107,7 +111,83 @@
   kubectl exec -it samplepod -- /bin/bash
   (in samplepod) ifconfig
   ````  
-* 
+* Create Python script to update Pod IP to ENI IP (vi IpUpdate.py and paste below)
+  ````
+  import requests
+  import boto3, json
+  import sys
+  from requests.packages.urllib3 import Retry
+
+  ec2_client = boto3.client('ec2', region_name='us-east-1')
+
+  def assign_ip():
+      instance_id = get_instance_id()
+      subnet_cidr = "10.0.4.0/24"
+
+      response = ec2_client.describe_subnets(
+          Filters=[
+              {
+                  'Name': 'cidr-block',
+                  'Values': [
+                      subnet_cidr,
+                  ]
+              },
+          ]
+      )
+
+      for i in response['Subnets']:
+          subnet_id = i['SubnetId']
+          break
+
+      response = ec2_client.describe_network_interfaces(
+          Filters=[
+              {
+                  'Name': 'subnet-id',
+                  'Values': [
+                      subnet_id,
+                  ]
+              },
+              {
+                  'Name': 'attachment.instance-id',
+                  'Values': [
+                      instance_id,
+                  ]
+              }
+          ]
+      )
+
+      for j in response['NetworkInterfaces']:
+          network_interface_id = j['NetworkInterfaceId']
+          break
+
+      response = ec2_client.assign_private_ip_addresses(
+          AllowReassignment=True,
+          NetworkInterfaceId=network_interface_id,
+          PrivateIpAddresses=[
+              "10.0.4.70",
+          ]
+      )
+
+  def get_instance_id():
+      instance_identity_url = "http://169.254.169.254/latest/dynamic/instance-identity/document"
+      session = requests.Session()
+      retries = Retry(total=3, backoff_factor=0.3)
+      metadata_adapter = requests.adapters.HTTPAdapter(max_retries=retries)
+      session.mount("http://169.254.169.254/", metadata_adapter)
+      try:
+          r = requests.get(instance_identity_url, timeout=(2, 5))
+      except (requests.exceptions.ConnectTimeout, requests.exceptions.ConnectionError) as err:
+          print("Connection to AWS EC2 Metadata timed out: " + str(err.__class__.__name__))
+          print("Is this an EC2 instance? Is the AWS metadata endpoint blocked? (http://169.254.169.254/)")
+          sys.exit(1)
+      response_json = r.json()
+      instanceid = response_json.get("instanceId")
+      return(instanceid)
+
+  assign_ip()
+  ````
+* Try ping frome the Pod to subnet default GW (10.0.4.1), it should be successful if you followed well!
+  
 
 ## 4. Clean up environment
 * Delete Node Group in EKS menu. 
