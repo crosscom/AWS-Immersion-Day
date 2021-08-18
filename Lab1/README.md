@@ -100,10 +100,6 @@
   ````
   aws eks describe-cluster --name eks-my-first-stack
   ````
-   * (Optional) Upgrade VPC CNI (current VPC CNI 1.7 has a bug for supporting security group for multus interface).
-  ````
-  kubectl apply -f https://raw.githubusercontent.com/aws/amazon-vpc-cni-k8s/v1.8.0/config/v1.8/aws-k8s-cni.yaml
-  ````
 
 ## 6. Self-managed Node Group creation (with Multus CNI Plugin)
 * Go to S3 and create bucket (folder/directory) with *Create bucket*.
