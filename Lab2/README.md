@@ -10,9 +10,6 @@
   sudo groupadd docker
   sudo usermod -aG docker ${USER}
   sudo service docker start
-  ````
-  (Logout/Login back. You have to re-paste AWS credential again ('export..'))
-  ````
   docker
   ````
 * Create a directory for Dockerfile creation.
