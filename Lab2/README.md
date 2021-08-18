@@ -54,10 +54,7 @@
   ````
   kubectl apply -f https://raw.githubusercontent.com/aws/amazon-vpc-cni-k8s/master/config/multus/v3.7.2-eksbuild.1/aws-k8s-multus.yaml
   ````
-  Upgrade VPC CNI (current VPC CNI 1.7 has a bug for supporting security group for multus interface).
-  ````
-  kubectl apply -f https://raw.githubusercontent.com/aws/amazon-vpc-cni-k8s/v1.8.0/config/v1.8/aws-k8s-cni.yaml
-  ````
+
 * Create below networkAttachementDefinition (multus-ipvlan.yaml) and apply it to the cluster.
 
   ````
