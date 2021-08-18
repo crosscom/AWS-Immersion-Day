@@ -55,7 +55,7 @@
   kubectl apply -f https://raw.githubusercontent.com/aws/amazon-vpc-cni-k8s/master/config/multus/v3.7.2-eksbuild.1/aws-k8s-multus.yaml
   ````
 
-* Create below networkAttachementDefinition (multus-ipvlan.yaml) and apply it to the cluster.
+* Create below networkAttachmentDefinition (multus-ipvlan.yaml) and apply it to the cluster.
 
   ````
   apiVersion: "k8s.cni.cncf.io/v1"
