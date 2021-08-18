@@ -4,7 +4,7 @@
 * You only have to use 'us-east-1' Region not the one closest to you.
 
 ## Log in to AWS Event Engine 
-
+* Today's event hash: e055-1bad7c7a74-11
 * https://dashboard.eventengine.run/dashboard.
 * Please put Event Hash (will be given at the session from your instructor). 
 * Please use OTP authentication with your company email.
