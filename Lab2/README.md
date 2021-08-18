@@ -10,6 +10,9 @@
   sudo groupadd docker
   sudo usermod -aG docker ${USER}
   sudo service docker start
+  ````
+  Logout from Bastion and Login back (then you have to re-configure AWS Credential (copy "export AWS_..." again). 
+  ````
   docker
   ````
 * Create a directory for Dockerfile creation.
