@@ -107,7 +107,7 @@
   kubectl exec -it samplepod -- /bin/bash
   (in samplepod) ifconfig
   ````  
-* Create Python script to update Pod IP to ENI IP (vi IpUpdate.py and paste below)
+* Create Python script to update Pod IP to ENI IP (vi ipUpdate.py and paste below)
   ````
   import requests
   import boto3, json
@@ -182,6 +182,10 @@
 
   assign_ip()
   ````
+  ````
+  python3 ipUpdate.py
+  ````
+* Check EC2 Console, whether this multus ENI of the worker node has Pod IP address (10.0.4.70/24) as secondary IP address.  
 * Try ping frome the Pod to subnet default GW (10.0.4.1), it should be successful if you followed well!
   
 
