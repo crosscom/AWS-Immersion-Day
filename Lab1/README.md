@@ -98,7 +98,7 @@
 
 * Verify it from AWS CLI
   ````
-  aws eks describe-cluster --name eks-my-first-stack
+  aws eks describe-cluster --name=eks-my-first-stack
   ````
 
 ## 6. Self-managed Node Group creation (for Multus CNI required applications)
