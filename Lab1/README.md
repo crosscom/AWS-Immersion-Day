@@ -101,7 +101,7 @@
   aws eks describe-cluster --name eks-my-first-stack
   ````
 
-## 6. Self-managed Node Group creation (with Multus CNI Plugin)
+## 6. Self-managed Node Group creation (for Multus CNI required applications)
 * Go to S3 and create bucket (folder/directory) with *Create bucket*.
 * Bucket name to be unique like *young-jung-immersion* (recommend to use your name or unique keyword), and then *Create bucket*.
 * Click the bucket you just created and drag & drop lambda_function.zip file (which you can find from /template directory of this GitHub). Then, click *Upload*.
