@@ -186,7 +186,7 @@
   python3 ipUpdate.py
   ````
 * Check EC2 Console, whether this multus ENI of the worker node has Pod IP address (10.0.4.70/24) as secondary IP address.  
-* Try ping frome the Pod to subnet default GW (10.0.4.1), it should be successful if you followed well!
+* Try ping frome the Pod to subnet default GW (10.0.4.1), it should be successful if you followed well! Congratulation, you made it all course successful!
   
 
 ## 4. Clean up environment
