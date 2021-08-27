@@ -193,3 +193,8 @@
 * Delete Node Group in EKS menu. 
 * Go to CloudFormation and Delete ng1 stack. 
 * After completion of above, delete the first infra stack. 
+
+## What next? 
+I recommend you to read below blog. You already have done the most of parts of setup process guided in the blog. You can easily build your own functional 4G EPC Core on EKS environment within 45 min. :)
+https://aws.amazon.com/blogs/opensource/open-source-mobile-core-network-implementation-on-amazon-elastic-kubernetes-service/
+
