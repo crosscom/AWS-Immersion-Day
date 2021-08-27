@@ -191,8 +191,8 @@
 
 ## 4. Clean up environment
 * Delete Node Group in EKS menu. 
-* Go to CloudFormation and Delete ng1 stack. 
-* After completion of above, delete the first infra stack. 
+* Go to CloudFormation and "Delete" worker-node stack you created. 
+* After completion of above, also "Delete" the first infra stack. 
 
 ## What next? 
 I highly encourage you to walk through below blog post contents. You already have done the most of parts of setup process guided in the blog. You can easily build your own functional 4G EPC Core on EKS environment within 45 min after following steps similar to this course. 
