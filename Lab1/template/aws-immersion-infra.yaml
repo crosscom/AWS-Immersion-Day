@@ -106,7 +106,7 @@ Parameters:
     Default: '/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2'
 
 Resources:
-  MyVpc:
+  Vpc:
     Type: 'AWS::EC2::VPC'
     Properties:
       CidrBlock: !Ref VpcCidr
@@ -117,24 +117,24 @@ Resources:
           Value: !Sub "vpc-${AWS::StackName}"
 
   ### IGW for the VPC
-  MyVpcIgw:
+  VpcIgw:
     Type: 'AWS::EC2::InternetGateway'
     Properties:
       Tags:
         - Key: Name
           Value: !Sub "igw-${AWS::StackName}"
-  MyVpcIgwAattach:
+  VpcIgwAattach:
     Type: 'AWS::EC2::VPCGatewayAttachment'
     Properties:
-      VpcId: !Ref MyVpc
-      InternetGatewayId: !Ref MyVpcIgw
+      VpcId: !Ref Vpc
+      InternetGatewayId: !Ref VpcIgw
 
 
   #### Subnet-Public #####
   PublicSubnetAz1:
     Type: 'AWS::EC2::Subnet'
     Properties:
-      VpcId: !Ref MyVpc
+      VpcId: !Ref Vpc
       CidrBlock: !Ref PublicSubnetAz1Cidr
       AvailabilityZone: !Select ['0', !Ref AvailabilityZones]
       Tags:
@@ -145,7 +145,7 @@ Resources:
   PublicSubnetAz2:
     Type: 'AWS::EC2::Subnet'
     Properties:
-      VpcId: !Ref MyVpc
+      VpcId: !Ref Vpc
       CidrBlock: !Ref PublicSubnetAz2Cidr
       AvailabilityZone: !Select ['1', !Ref AvailabilityZones]
       Tags:
@@ -156,17 +156,17 @@ Resources:
   PublicSubnetRt:
     Type: 'AWS::EC2::RouteTable'
     Properties:
-      VpcId: !Ref MyVpc
+      VpcId: !Ref Vpc
       Tags:
         - Key: Name
           Value: !Sub "publicSubnetRt-${AWS::StackName}"
   PublicRtDfltRt:
     Type: 'AWS::EC2::Route'
-    DependsOn: MyVpcIgwAattach
+    DependsOn: VpcIgwAattach
     Properties:
       RouteTableId: !Ref PublicSubnetRt
       DestinationCidrBlock: 0.0.0.0/0
-      GatewayId: !Ref MyVpcIgw
+      GatewayId: !Ref VpcIgw
   PublicAz1RtAssoc:
     Type: 'AWS::EC2::SubnetRouteTableAssociation'
     Properties:
@@ -182,7 +182,7 @@ Resources:
   EipNatGwAz1:
     Type: 'AWS::EC2::EIP'
     Properties:
-      Domain: MyVpc
+      Domain: Vpc
   NatGatewayAz1:
     Type: 'AWS::EC2::NatGateway'
     Properties:
@@ -195,7 +195,7 @@ Resources:
   EipNatGwAz2:
     Type: 'AWS::EC2::EIP'
     Properties:
-      Domain: MyVpc
+      Domain: Vpc
   NatGatewayAz2:
     Type: 'AWS::EC2::NatGateway'
     Properties:
@@ -210,7 +210,7 @@ Resources:
   PrivateSubnetAz1:
     Type: 'AWS::EC2::Subnet'
     Properties:
-      VpcId: !Ref MyVpc
+      VpcId: !Ref Vpc
       CidrBlock: !Ref PrivateSubnetAz1Cidr
       AvailabilityZone: !Select ['0', !Ref AvailabilityZones]
       Tags:
@@ -221,7 +221,7 @@ Resources:
   PrivateSubnetAz2:
     Type: 'AWS::EC2::Subnet'
     Properties:
-      VpcId: !Ref MyVpc
+      VpcId: !Ref Vpc
       CidrBlock: !Ref PrivateSubnetAz2Cidr
       AvailabilityZone: !Select ['1', !Ref AvailabilityZones]
       Tags:
@@ -234,14 +234,14 @@ Resources:
   PrivateAz1SubnetRt:
     Type: 'AWS::EC2::RouteTable'
     Properties:
-      VpcId: !Ref MyVpc
+      VpcId: !Ref Vpc
       Tags:
         - Key: Name
           Value: !Sub "privateAz1SubnetRt-${AWS::StackName}"
   PrivateAz2SubnetRt:
     Type: 'AWS::EC2::RouteTable'
     Properties:
-      VpcId: !Ref MyVpc
+      VpcId: !Ref Vpc
       Tags:
         - Key: Name
           Value: !Sub "privateAz2SubnetRt-${AWS::StackName}"
@@ -272,7 +272,7 @@ Resources:
   MultusSubnetSigAz1:
     Type: 'AWS::EC2::Subnet'
     Properties:
-      VpcId: !Ref MyVpc
+      VpcId: !Ref Vpc
       CidrBlock: !Ref MultusSubnetSigAz1Cidr
       AvailabilityZone: !Select ['0', !Ref AvailabilityZones]
       Tags:
@@ -281,7 +281,7 @@ Resources:
   MultusSubnetUsrAz1:
     Type: 'AWS::EC2::Subnet'
     Properties:
-      VpcId: !Ref MyVpc
+      VpcId: !Ref Vpc
       CidrBlock: !Ref MultusSubnetUsrAz1Cidr
       AvailabilityZone: !Select ['0', !Ref AvailabilityZones]
       Tags:
@@ -290,7 +290,7 @@ Resources:
   MultusSubnetSigAz2:
     Type: 'AWS::EC2::Subnet'
     Properties:
-      VpcId: !Ref MyVpc
+      VpcId: !Ref Vpc
       CidrBlock: !Ref MultusSubnetSigAz2Cidr
       AvailabilityZone: !Select ['1', !Ref AvailabilityZones]
       Tags:
@@ -299,7 +299,7 @@ Resources:
   MultusSubnetUsrAz2:
     Type: 'AWS::EC2::Subnet'
     Properties:
-      VpcId: !Ref MyVpc
+      VpcId: !Ref Vpc
       CidrBlock: !Ref MultusSubnetUsrAz2Cidr
       AvailabilityZone: !Select ['1', !Ref AvailabilityZones]
       Tags:
@@ -310,7 +310,7 @@ Resources:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupDescription: Security Group for Multus Subnets (sig/up)
-      VpcId: !Ref MyVpc
+      VpcId: !Ref Vpc
       SecurityGroupIngress:
       - IpProtocol: '-1'
         FromPort: '-1'
@@ -345,7 +345,7 @@ Resources:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupDescription: Enable SSH access via port 22
-      VpcId: !Ref MyVpc
+      VpcId: !Ref Vpc
       SecurityGroupIngress:
       - IpProtocol: tcp
         FromPort: '22'
@@ -373,7 +373,7 @@ Resources:
       ImageId: !Ref LatestAmiId
       Tags:
         - Key: Name
-          Value: !Sub "MyBastionHost-${AWS::StackName}"
+          Value: !Sub "BastionHost-${AWS::StackName}"
 
   ## EKS cluster ##
   EksIamRole:
@@ -396,7 +396,7 @@ Resources:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupDescription: Cluster communication with worker nodes
-      VpcId: !Ref MyVpc
+      VpcId: !Ref Vpc
   EksCluster:
     Type: AWS::EKS::Cluster
     Properties:
@@ -506,12 +506,12 @@ Resources:
 Outputs:
   VpcId:
     Description: VPC ID
-    Value: !Ref MyVpc
+    Value: !Ref Vpc
     Export:
       Name: !Sub "${AWS::StackName}-VpcId"
   VpcCidr:
     Description: VPC CIDR
-    Value: !GetAtt MyVpc.CidrBlock
+    Value: !GetAtt Vpc.CidrBlock
     Export:
       Name: !Sub "${AWS::StackName}-VpcCidr"
   BastionPublicIp:
