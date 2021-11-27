@@ -1,8 +1,8 @@
 # Lab1: EKS for CNF engineer (Environment creation)
 
 ### Please keep in mind..
-* You only have to use 'us-east-1' Region not the one closest to you. (make it sure, you should be with "N.Virginia" - please refer to below console view).
-* As of today (8/15/2021), if we run infra cloudformation, then EKS cluster is created with K8s 1.20 versino. 
+* You only have to use 'us-west-2' Region not the one closest to you. (make it sure, you should be with "Oregon" - please refer to below console view).
+* As of today (11/28/2021), if we run infra cloudformation, then EKS cluster is created with K8s 1.21 version. 
 
 ## 1. Please download CFN template for this Lab
 * CFN repo1: https://github.com/crosscom/AWS-Immersion-Day/blob/main/Lab1/templates/aws-immersion-infra.yaml
