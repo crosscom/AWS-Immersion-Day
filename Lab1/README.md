@@ -5,6 +5,7 @@
 * As of today (11/28/2021), if we run infra cloudformation, then EKS cluster is created with K8s 1.21 version. 
 
 ## 1. Please download CFN template for this Lab
+*to download these from GitHub at once, please select "Code" on the top left corner of menu, and then click green "Code" menu and then select "Download Zip" file.*
 * CFN repo1: https://github.com/crosscom/AWS-Immersion-Day/blob/main/Lab1/templates/aws-immersion-infra.yaml
     * This creates VPC, public/private subnets, subnet route tables, IGW, NAT-GW, Security Groups, EKS Cluster and Bastion Instance
 * CFN repo2: https://github.com/crosscom/AWS-Immersion-Day/blob/main/Lab1/templates/amazon-eks-nodegroup-multus.yaml
