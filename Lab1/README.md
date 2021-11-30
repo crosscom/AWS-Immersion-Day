@@ -20,7 +20,7 @@
 * Type "CloudFormation" at search service section and go to CloudFormation.
 * Create Stack -> upload a template file -> Choose file (select downloaded "aws-immersion-infra.yaml").
 * Keep default values in configuraiton of CloudFormation Template. 
-    * AvailabilityZones --> choose us-east-1a and us-east-1b (2 AZs required for EKS creation).
+    * AvailabilityZones --> choose us-west-2a and us-west-2b (2 AZs required for EKS creation).
     * BastionKeyPairName --> select 'ee-dfault-keypair' from dropdown menu. 
     * Click "Next"
 * There is nothing to specify in "Configure Stack options" page, so please click again "Next" at the bottom. 
