@@ -176,7 +176,7 @@
     containers:
     - name: samplepod
       command: ["/bin/bash", "-c", "trap : TERM INT; sleep infinity & wait"]
-      image: 914125631499.dkr.ecr.us-west-2.amazonaws.com/my-ecr-image:latest
+      image: 287356772737.dkr.ecr.us-west-2.amazonaws.com/my-ecr-image:latest
   ````
 
   ````
