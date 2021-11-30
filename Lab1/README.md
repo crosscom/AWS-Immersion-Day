@@ -105,7 +105,7 @@
 * Please memorize bucket name you create (this is required in CloudFormation)
 * Go to CloudFormation console by selecting CloudFormation from Services drop down or by search menu. 
     * Select *Create stack*, *with new resources(standard)*.
-    * Click *Template is ready" (default), "Upload a template file", "Choose file". Select "amazon-eks-nodegroup-multus.yaml" file that you have downloaded from this GitHub. 
+    * Click *Template is ready* (default), "Upload a template file", "Choose file". Select "amazon-eks-nodegroup-multus.yaml" file that you have downloaded from this GitHub. 
     * Stack name -> ng1
     * ClusterName -> eks-immersion (your own name)
     * ClusterControlPlaneSecurityGroup -> "immersion-EksControlSecurityGroup-xxxx"
