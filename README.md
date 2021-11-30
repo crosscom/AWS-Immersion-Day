@@ -9,7 +9,7 @@
 * Please use OTP authentication with your email.
   ![Otp](Lab1/images/otp.png)
 * Click "Set Team Name" (Team is equivalent to the account)
-    * Please put TEAM name to be your name.  
+    * Please put TEAM name to be your name (table+your-name).  
     ![Dashboard](Lab1/images/dashboard-aws.png)
 * Click "SSH key" 
     * Download **ee-default-keypair** to your PC (just in case, copy key material to notepad as well).
