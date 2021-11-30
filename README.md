@@ -1,7 +1,7 @@
 # AWS-Immersion-Day for CNF engineers (dev/test) in Telco
 
 ### Please keep in mind..
-* You only have to use 'us-east-1' Region not the one closest to you.
+* You only have to use 'us-west-2' Region not the one closest to you.
 
 ## Log in to AWS Event Engine 
 * https://dashboard.eventengine.run/dashboard.
