@@ -1,7 +1,7 @@
 # AWS-Immersion-Day for CNF engineers (dev/test) in Telco
 
 ## Please keep in mind..
-* You only have to use 'us-west-2' Region not the one closest to you.
+* You only have to use 'us-west-2' (Oregon) Region not the one closest to you.
 
 ## Download GitHub as zip (for CloudFormation Template and Lambda.zip file)
 For the download, please select "Code" on the top left corner of menu, and then click green "Code" menu and then select "Download Zip" file.
