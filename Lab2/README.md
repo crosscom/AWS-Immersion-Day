@@ -194,6 +194,7 @@
 * After completion of above, also "Delete" the first infra stack. 
 
 ## What next? 
-I highly encourage you to walk through below blog post contents. You already have done the most of parts of setup process guided in the blog. You can easily build your own functional 4G EPC Core on EKS environment within 45 min after following steps similar to this course. 
-https://aws.amazon.com/blogs/opensource/open-source-mobile-core-network-implementation-on-amazon-elastic-kubernetes-service/
+* I highly encourage you to walk through below blog post contents. You already have done the most of parts of setup process guided in the blog. You can easily build your own functional 4G EPC Core on EKS environment within 45 min after following steps similar to this course. https://aws.amazon.com/blogs/opensource/open-source-mobile-core-network-implementation-on-amazon-elastic-kubernetes-service/
+* For the last of Day2 steps (ipUpdate.py), you can refer to https://github.com/aws-samples/eks-automated-ipmgmt-multus-pods to see how we can automate this process using sidecar or initController of the container. 
+
 
