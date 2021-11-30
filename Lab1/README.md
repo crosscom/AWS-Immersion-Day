@@ -60,11 +60,6 @@
 
     ````
     aws sts get-caller-identity
-    {
-      "Account": "400888888888", 
-      "UserId": "AROAV2K6K7UQPEU2EAAAA:MasterKey", 
-      "Arn": "arn:aws:sts::400888888888:assumed-role/TeamRole/MasterKey"
-    }
     ````
 
 * (Window user) Log in from your laptop 
