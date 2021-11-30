@@ -49,7 +49,7 @@
     * Copy AWS credentials (AWS_DEFAULT_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY; be mindful that you have to use your own not below one, that I asked youto copy at Step 2).
 
   ````
-  export AWS_DEFAULT_REGION=us-east-1
+  export AWS_DEFAULT_REGION=us-west-2
   export AWS_ACCESS_KEY_ID=ASIA..
   export AWS_SECRET_ACCESS_KEY=4wyDA..
   export AWS_SESSION_TOKEN=IQo...
