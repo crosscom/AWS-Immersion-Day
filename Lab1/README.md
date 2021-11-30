@@ -6,11 +6,11 @@
 
 ## 1. Please download CFN template for this Lab
 *to download these from GitHub at once, please select "Code" on the top left corner of menu, and then click green "Code" menu and then select "Download Zip" file.*
-* CFN repo1: https://github.com/crosscom/AWS-Immersion-Day/blob/main/Lab1/templates/aws-immersion-infra.yaml
+* CFN repo1: https://github.com/crosscom/AWS-Immersion-Day/blob/main/Lab1/template/aws-immersion-infra.yaml
     * This creates VPC, public/private subnets, subnet route tables, IGW, NAT-GW, Security Groups, EKS Cluster and Bastion Instance
-* CFN repo2: https://github.com/crosscom/AWS-Immersion-Day/blob/main/Lab1/templates/amazon-eks-nodegroup-multus.yaml
+* CFN repo2: https://github.com/crosscom/AWS-Immersion-Day/blob/main/Lab1/template/amazon-eks-nodegroup-multus.yaml
     * This creates Autoscaling group to be used for worker node group of your EKS cluster. This also creates Lambda function for multus-ready worker node group.
-* Lambda Function Zip: https://github.com/crosscom/AWS-Immersion-Day/blob/main/Lab1/templates/lambda_function.zip
+* Lambda Function Zip: https://github.com/crosscom/AWS-Immersion-Day/blob/main/Lab1/template/lambda_function.zip
     * Lambda function to be used along with CFN repo2 (worker node group stack). 
 
 ## 2. Log in to AWS Console 
