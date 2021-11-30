@@ -34,7 +34,7 @@
 ## 4. Login to Bastion Host 
 * Usually in eksworkshop or normal immersion day offered by AWS, we guide customer to experience Cloud9 (AWS IDE environment). But in this workshop, plan is to provide a general environment with your own Bastion Host EC2, where you have to install kubectl tools and other tools as needed.
 * (General)
-    * We can use EC2 Instance Connect to login to EC2 instance.
+    * We can use *EC2 Instance Connect* to login to EC2 instance from the AWS console.
     * EC2->Instances->"connect" (right top corner of screen). 
     * click "connect"
 
