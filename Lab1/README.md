@@ -14,6 +14,7 @@
     * Lambda function to be used along with CFN repo2 (worker node group stack). 
 
 ## 2. Log in to AWS Console 
+(please select Region to be "Oregon")
 ![Console View](images/console.png)
 
 ## 3. Create Environment with CloudFormation
