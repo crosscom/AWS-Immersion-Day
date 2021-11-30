@@ -190,7 +190,6 @@
   
 
 ## 4. Clean up environment
-* Delete Node Group in EKS menu. 
 * Go to CloudFormation and "Delete" worker-node stack you created. 
 * After completion of above, also "Delete" the first infra stack. 
 
