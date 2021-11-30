@@ -1,7 +1,7 @@
 # Lab2: EKS for CNF engineer (Application creation)
 
 ### Please keep in mind..
-* You only have to use 'us-east-1' Region not the one closest to you.
+* You only have to use 'us-west-2' Region.
 
 ## 1. Create a Docker Image 
 * Prepare docker environment (at your bastion host EC2 instance)
@@ -42,9 +42,9 @@
       * put your own repo name such as, "my-ecr-image" (The name must start with a letter and can only contain lowercase letters, numbers, hyphens, underscores, and forward slashes) -> "Create repository".
 * Run below commands at Bastion host (where you created a docker image). 
   ````
-  aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 914125631499.dkr.ecr.us-east-1.amazonaws.com
-  docker tag 6a01b2ad2952 914125631499.dkr.ecr.us-east-1.amazonaws.com/my-ecr-image:latest
-  docker push 914125631499.dkr.ecr.us-east-1.amazonaws.com/my-ecr-image:latest
+  aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 914125631499.dkr.ecr.us-west-2.amazonaws.com
+  docker tag 6a01b2ad2952 914125631499.dkr.ecr.us-west-2.amazonaws.com/my-ecr-image:latest
+  docker push 914125631499.dkr.ecr.us-west-2.amazonaws.com/my-ecr-image:latest
   ````
   *keep in mind that, you have to use your Account ID and Image ID of your docker (you can retrieve all information from above docker images command and from AWS ECR console)*
 
@@ -95,7 +95,7 @@
     containers:
     - name: samplepod
       command: ["/bin/bash", "-c", "trap : TERM INT; sleep infinity & wait"]
-      image: 914125631499.dkr.ecr.us-east-1.amazonaws.com/my-ecr-image:latest
+      image: 914125631499.dkr.ecr.us-west-2.amazonaws.com/my-ecr-image:latest
   ````
 
   ````
@@ -114,7 +114,7 @@
   import sys
   from requests.packages.urllib3 import Retry
 
-  ec2_client = boto3.client('ec2', region_name='us-east-1')
+  ec2_client = boto3.client('ec2', region_name='us-west-2')
 
   def assign_ip():
       instance_id = get_instance_id()
