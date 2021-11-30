@@ -114,7 +114,7 @@
     * KeyName -> ee-default-keypair
     * VpcId -> vpc-immersion (that you created)
     * Subnets -> privateAz1-immersion (this is for main primary K8s networking network)
-    * MultusSubnets -> multusSigAz1
+    * MultusSubnets -> multus1Az1
     * MultusSecurityGroups -> immersion-MultusSecurityGroup
     * LambdaS3Bucket -> the one you created (young-jung-immersion)
     * LambdaS3Key -> lambda_function.zip
