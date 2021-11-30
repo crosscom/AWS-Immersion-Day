@@ -123,21 +123,32 @@
     
 * Once CloudFormation stack creation is completed, check *Output* part in the menu and copy the value of NodeInstanceRole (e.g. arn:aws:iam::153318889914:role/ng1-NodeInstanceRole-1C77OUUUP6686 --> this is an example, you have to use your own)
 * Go to the Bastion Host where we can run kubectl command. 
-* Download aws-auth-cm file at Bastion Host and create aws-auth ConfigMap. 
+* Download aws-auth-cm file at Bastion Host.
+
   ````
   curl -o aws-auth-cm.yaml https://s3.us-west-2.amazonaws.com/amazon-eks/cloudformation/2020-10-29/aws-auth-cm.yaml
+  ````
+
+* Open aws-auth-cm.yaml file downloaded using vi or any text editor. And place above copied NodeInstanceRole value to the place of "*<ARN of instance role (not instance profile)>*", and then apply this through kubectl.
+
+  ````
+  kind: ConfigMap
+  metadata:
+    name: aws-auth
+    namespace: kube-system
+  data:
+    mapRoles: |
+      - rolearn: arn:aws:iam::153318889914:role/ng1-NodeInstanceRole-1C77OUUUP6686
+        username: system:node:{{EC2PrivateDNSName}}
+        groups:
+          - system:bootstrappers
+          - system:nodes
+  ````
+
+  ````
   kubectl apply -f aws-auth-cm.yaml
   ````
-* Create a shell script file of below (eks_role_update.sh). You have to place your own NodeInstanceRole copied in the previous step instead of <<"your own NodeInstance comes here">>. (you have to give a permission to script file as well)
-  ````
-  ROLE="    - rolearn: <<your own NodeInstance comes here>>\n      username: build\n      groups:\n        - system:masters"
- 
-  kubectl get -n kube-system configmap/aws-auth -o yaml | awk "/mapRoles: \|/{print;print \"$ROLE\";next}1" > /tmp/aws-auth-patch.yml
- 
-  kubectl patch configmap/aws-auth -n kube-system --patch "$(cat /tmp/aws-auth-patch.yml)"
-  ````
-  
- * Verfiy node group is created under your cluster. 
+* Verfiy node group is created under your cluster. 
  ````
  kubectl get nodes
  ````
