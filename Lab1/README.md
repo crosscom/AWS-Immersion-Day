@@ -123,7 +123,7 @@
     
 * Once CloudFormation stack creation is completed, check *Output* part in the menu and copy the value of NodeInstanceRole (e.g. arn:aws:iam::153318889914:role/ng1-NodeInstanceRole-1C77OUUUP6686 --> this is an example, you have to use your own)
 * Go to the Bastion Host where we can run kubectl command. 
-* Create a shell script file of below (eks_role_update.sh). You have to place your own NodeInstanceRole copied in the previous step instead of <<your own NodeInstance comes here>>.
+* Create a shell script file of below (eks_role_update.sh). You have to place your own NodeInstanceRole copied in the previous step instead of "<<your own NodeInstance comes here>>". (you have to give a permission to script file as well)
   ````
   ROLE="    - rolearn: <<your own NodeInstance comes here>>\n      username: build\n      groups:\n        - system:masters"
  
